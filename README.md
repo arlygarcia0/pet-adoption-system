@@ -22,8 +22,7 @@ Each pet type includes breed information to represent different available animal
 - Polymorphism
 - Abstraction
 
-## Planned Classes
-## Classes and Objects
+## Planned Classes and Objects
 - Shelter
 - User
 - Pet (base class)
