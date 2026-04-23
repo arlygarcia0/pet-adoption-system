@@ -8,6 +8,6 @@ public class Dog extends Pet {
     // method overriding
     @Override 
     public void makeSound() {
-        System.out.print("Bark!");
+        System.out.println("Bark!");
     }
 }
