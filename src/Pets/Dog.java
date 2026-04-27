@@ -4,10 +4,9 @@ public class Dog extends Pet {
     public Dog(String name, String  breed, int age) {
         super(name, breed, age);
     }
-
-    // method overriding
-    @Override 
-    public void makeSound() {
-        System.out.println("Bark!");
+    // Method overriding 
+    @Override
+    public void displayInfo() {
+        System.out.println("Dog: " + getName() + " - " + getBreed() + " - " + getAge() + " years old");
     }
 }
