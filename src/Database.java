@@ -61,7 +61,7 @@ public class Database {
 			//We will keeep calling the next() method from result until it is empty
 			//We will read row by row
 			while(result.next()) {
-				System.out.println(result.getString(1)+", " + result.getString(2)+ ", " +result.getString(3));
+				System.out.println(result.getString(1) +", " + result.getString(2) + ", " + result.getString(3) + ", " + result.getString(4) + ", " + result.getString(5) + ", " + result.getString(6));
 			}
 		}
 		catch (SQLException e) {

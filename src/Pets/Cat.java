@@ -7,6 +7,6 @@ public class Cat extends Pet {
     // Method overriding 
     @Override
     public void displayInfo() {
-        System.out.println("Dog: " + getName() + " - " + getBreed() + " - " + getAge() + " years old");
+        System.out.println("Cat: " + getName() + " - " + getBreed() + " - " + getAge() + " years old");
     }
 }
