@@ -35,6 +35,9 @@ public class Main {
         User user;
         if (response.equals("yes")) {
             int id = users.getUserID(name);
+            if (id == -1) {
+                
+            }
             user = new User(name, id);
         
             System.out.println("Welcome back, " + user.getName() + "! ");

@@ -70,20 +70,22 @@ public class Database {
 		}
 	}
 
-	//Read from our database and return
-	public ResultSet Query(String query) {
+	//Read from our database and return -> Using object to return any data type
+	public Object returnDatabase (String query, String columnName) {
 		try {
 			if (connect == null) {
 				connectDatabase();
 			}
 			ResultSet result = statement.executeQuery(query);
-			return result;
+			if(result.next()) {
+				return result.getObject(columName);
+			}
+			
 		}
 		catch (SQLException e) {
-			System.err.println("Failed to read from Database");
+			System.err.println("Failed to return from Database");
 			System.err.println(e.toString());
 			return null;
 		}
 	}
-
 }
