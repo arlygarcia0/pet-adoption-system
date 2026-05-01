@@ -70,4 +70,20 @@ public class Database {
 		}
 	}
 
+	//Read from our database and return
+	public ResultSet Query(String query) {
+		try {
+			if (connect == null) {
+				connectDatabase();
+			}
+			ResultSet result = statement.executeQuery(query);
+			return result;
+		}
+		catch (SQLException e) {
+			System.err.println("Failed to read from Database");
+			System.err.println(e.toString());
+			return null;
+		}
+	}
+
 }

@@ -1,6 +1,7 @@
-public class Adoption extends AdoptionCenter {
+public class Adoption extends PetsTable {
     // Adopt a pet 
-    public void adoptPet(int petID) {
-        db.updateDatabase("UPDATE Pets SET adopted = 1 WHERE id =" + petID);
+    public void adoptPet(String petName, int userID) {
+        db.updateDatabase("UPDATE Pets SET adopted = 1, adoptedBy = " + userID + " WHERE name = '" + petName + "'");
+        System.out.println("Pet adopted successfully!");
     }
 }

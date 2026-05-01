@@ -1,25 +1,29 @@
 public class User {
     // Attributes
     private String name;
-    private int ID;
+    private int userID;
 
     // Constructor 
-    public User(String name, int ID) {
+    public User(String name) { //if new user
         this.name = name;
-        this.ID = ID;
+        userID = (int) (Math.random() * 1000); // Generate a random user ID
+    }
+    public User(String name, int userID) { //if returning user
+        this.name = name;
+        this.userID = userID;
     }
 
     // Setter & Getter Methods
     public String getName() {
         return name;
     }
-    public int ID() { 
-        return ID;
+    public int getUserID() {
+        return userID;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

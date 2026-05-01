@@ -6,37 +6,68 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         // 1. Initialize system: 
-        //    Create pets table and add current pets in the shelter
-        AddValues add = new AddValues();
-        add.ShelterRecords();
-        
+        //    Creating pets table and parameters; Adding values to the tables
+        PetsTable pets = new PetsTable();
+        UsersTable users = new UsersTable();
+        Adoption adoption = new Adoption();
+        DisplayInfo display = new DisplayInfo();
+
+        // 1.1 Show currents pets:
+        System.out.println("Current pets in the shelter: ");
+        display.AllPets();
+
+        //1.2 Add a pet
+        Dog dog = new Dog("Max",  "Beagle", 3);
+        pets.addPet(dog);
+
         // 2. Create new user:
         //    Ask for adopter name -> Check if its already in the system
         //    if not then add it to the table with currently 0 pets
         //    if yes, then select its tables
-        System.out.println("Enter your name: ");
+        System.out.println("Welcome to the Pet Adoption Center!");
+
+        System.out.println("Please enter your name: ");
         String name = input.nextLine();
 
-        User user = new User(name);
+        System.out.println("Are you a returning user? (yes/no): ");
+        String response = input.nextLine();
 
-        // 3. Display available pets:
+        User user;
+        if (response.equals("yes")) {
+            int id = users.getUserID(name);
+            user = new User(name, id);
+        
+            System.out.println("Welcome back, " + user.getName() + "! ");
+        } 
+        else {
+            System.out.println("Creating new account:: ");
+            user = new User(name); //Creating an user parameter
+            users.NewUser(user); //Adding the user to the table
+            System.out.println("Account created successfully for " + user.getName() + "! ");
+        }
+
+        // 5. Show adopted pets by user
+        display.AdoptedPets(user.getUserID());
+
+        // 4. Display available pets:
         //    Show pets where adopted = false
+        display.AvailablePets();
 
-        // 4. Adopt a pet
+        // 5. Adopt a pet
         //    User selects pet -> Choose by breed or they can choose specifically by name/id
         //    Update pet's database and add it to user's table
-        System.out.println("Which pet would you like?d");
-        // 5. Show adopted pets by user
+        System.out.println("Please enter the name of the pet you'd like: ");
+        String petName = input.nextLine();
+        adoption.adoptPet(petName, user.getUserID());
+        
+        // 6. Show adopted pets by user
+        display.AdoptedPets(user.getUserID());
 
-        // 6. Add new pet to the shelter
-        //    Add a dog then add a cat, check that both work
+        // 7. Show shelter status
+        display.AllPets();
 
-        // 7. Update pet information
-        //    Pet got older -> update age
-
-        // 8. Show shelter status
-
-        // 9. End program
-        input.close();
+        // 8. End program
+        // input.close();
+        
     }
 }
