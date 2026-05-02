@@ -1,5 +1,9 @@
 public class DisplayInfo extends PetsTable {
     //Show all pets
+
+    public DisplayInfo(Database db) {
+        super(db);
+    }
     public void AllPets() {
         System.out.println("All pets in the shelter: ");
         db.readDatabase("SELECT * FROM Pets");
@@ -12,7 +16,7 @@ public class DisplayInfo extends PetsTable {
     //Show adopted pets by user
     public void AdoptedPets(int userID) {
         System.out.println("Pets adopted by user: ");
-        db.readDatabase("SELECT name, breed, age FROM Pets WHERE adoptedBy = " + userID);
+        db.readDatabase("SELECT * FROM Pets WHERE adoptedBy = " + userID);
     }
 
     ////DELETE

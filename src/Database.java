@@ -78,14 +78,14 @@ public class Database {
 			}
 			ResultSet result = statement.executeQuery(query);
 			if(result.next()) {
-				return result.getObject(columName);
+				return result.getObject(columnName);
 			}
 			
 		}
 		catch (SQLException e) {
 			System.err.println("Failed to return from Database");
 			System.err.println(e.toString());
-			return null;
 		}
+		return null;
 	}
 }
