@@ -1,16 +1,18 @@
 import java.util.Scanner;
-import Pets.*;
+import Tables.*;
+import Models.*;
+import Database.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Database db = new Database(); //One database connection for everything
 
         // 1. Initialize system: 
         //    Creating pets table and parameters; Adding values to the tables
-        PetsTable pets = new PetsTable();
-        UsersTable users = new UsersTable();
-        Adoption adoption = new Adoption();
-        DisplayInfo display = new DisplayInfo();
+        PetsTable pets = new PetsTable(db); // Handles logic for the pets database
+        UsersTable users = new UsersTable(db); // Handles logic  for the users database
+        DisplayInfo display = new DisplayInfo(db); // Handles all printing
 
         // 1.1 Show currents pets:
         System.out.println("Current pets in the shelter: ");
@@ -34,16 +36,22 @@ public class Main {
 
         User user;
         if (response.equals("yes")) {
-            int id = users.getUserID(name);
+            int id = users.getUserID(name); //Gettin g users id using their name
+
             if (id == -1) {
-                
-            }
+                System.out.print("Sorry we couldn't find an account for \"" + name + "\".");
+                System.out.println("Creating new account for you instead: ");
+                user = new User(name); //Creating an user parameter
+                users.NewUser(user); //Adding the user to the table
+                System.out.println("Account created successfully for " + user.getName() + "! ");
+        else {
+            
+
             user = new User(name, id);
         
             System.out.println("Welcome back, " + user.getName() + "! ");
         } 
-        else {
-            System.out.println("Creating new account:: ");
+            System.out.println("Creating new account: ");
             user = new User(name); //Creating an user parameter
             users.NewUser(user); //Adding the user to the table
             System.out.println("Account created successfully for " + user.getName() + "! ");
@@ -70,7 +78,6 @@ public class Main {
         display.AllPets();
 
         // 8. End program
-        // input.close();
-        
+        input.close();
     }
 }

@@ -1,9 +1,10 @@
+package Models;
 public class User {
     // Attributes
     private String name;
     private int userID = -1;
 
-    // Constructor 
+    // Constructor -> Using overload
     public User(String name) { //if new user
         this.name = name;
     }

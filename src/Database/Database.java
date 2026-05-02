@@ -78,7 +78,7 @@ public class Database {
 			}
 			ResultSet result = statement.executeQuery(query);
 			if(result.next()) {
-				return result.getObject(columName);
+				return result.getObject(columnName);
 			}
 			
 		}

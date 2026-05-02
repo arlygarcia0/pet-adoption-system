@@ -1,4 +1,4 @@
-package Pets;
+package Models;
 
 // Making Pet abstract because we don't want a pet object to be instantiated, it has to be either dog/cat
 public abstract class Pet {
@@ -52,13 +52,4 @@ public abstract class Pet {
         this.adoptedByID = adoptedByID;
         this.adopted = true; // automatically mark as adopted
     }
-
-    // Method 
-    public void displayInfo() {
-        System.out.println(name + " - " + breed + " - " + age + " years old");
-    }
-
-
-
-
 }
