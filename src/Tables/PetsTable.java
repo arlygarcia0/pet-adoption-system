@@ -1,5 +1,7 @@
-package tables;
-import Pets.*;
+package Tables;
+import Models.*;
+import Database.Database;
+
 public class PetsTable {
     protected Database db;
 
@@ -7,15 +9,7 @@ public class PetsTable {
     public PetsTable(Database db) {
         this.db = db;
         //Create a table for pets in shelter
-        db.updateDatabase("CREATE TABLE Pets (name VARCHAR(50), type VARCHAR(50), breed VARCHAR(50), age INT, adopted BOOLEAN, adoptedBy INT)");
-        //Insert pets in the table, starting the database with 7 unadopted pets
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Soda', 'Dog', 'Doberman', 3, 0, null)");
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Rocky', 'Dog', 'Golden Retriever', 4, 0, null)");
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Cooper', 'Dog', 'German Shepherd', 8, 0, null)");
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Bella', 'Cat', 'Persian', 1, 0, null)");
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Olive', 'Cat', 'Maine Coon', 4, 0, null)");
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Leo', 'Cat', 'Bengal', 7, 0, null)");
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('Chloe', 'Cat', 'British Shorthair', 6, 0, null)");
+        db.updateDatabase("CREATE TABLE IF NOT EXISTS Pets (name VARCHAR(50), type VARCHAR(50), breed VARCHAR(50), age INT, adopted BOOLEAN, adoptedBy INT)");
     }
     // Adopt a pet 
     public void adoptPet(String petName, int userID) {

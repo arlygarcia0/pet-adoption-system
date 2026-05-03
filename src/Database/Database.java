@@ -1,3 +1,4 @@
+package Database;
 // Import necessary packages.
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -85,7 +86,8 @@ public class Database {
 		catch (SQLException e) {
 			System.err.println("Failed to return from Database");
 			System.err.println(e.toString());
-			return null;
+			
 		}
+		return null;
 	}
 }

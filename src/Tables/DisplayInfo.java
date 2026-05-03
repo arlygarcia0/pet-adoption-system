@@ -1,3 +1,5 @@
+package Tables;
+import Database.Database;
 public class DisplayInfo extends PetsTable {
     // Constructor
     public DisplayInfo (Database db) {

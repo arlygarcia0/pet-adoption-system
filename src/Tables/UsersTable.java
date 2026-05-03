@@ -1,4 +1,7 @@
-package tables;
+package Tables;
+import Database.Database;
+import Models.User;
+
 public class UsersTable {
     //Attribute
     protected Database db;
@@ -7,13 +10,7 @@ public class UsersTable {
     public UsersTable(Database db) {
         this.db = db;
         //Create a table for pets in shelter
-        db.updateDatabase("CREATE TABLE Users (name VARCHAR(255), id INT AUTO_INCREMENT PRIMARY KEY)");
-        //Add values
-        db.updateDatabase("INSERT INTO Users (name, id) VALUES ('Bob Bobbert')");
-        db.updateDatabase("INSERT INTO Users (name, id) VALUES ('Carl Carlton')");
-        db.updateDatabase("INSERT INTO Users (name, id) VALUES ('Jane Janeston')");
-        db.updateDatabase("INSERT INTO Users (name, id) VALUES ('Dan Danbert')");
-        db.updateDatabase("INSERT INTO Users (name, id) VALUES ('Susy Susan')");
+        db.updateDatabase("CREATE TABLE IF NOT EXISTS Users (name VARCHAR(255), id INT AUTO_INCREMENT PRIMARY KEY)");
     }
     
     // Get user ID by name -> existing user enters the system
@@ -26,7 +23,7 @@ public class UsersTable {
     }
 
     //Add user
-     public void NewUser(User name) {
+     public void NewUser(User user) {
         db.updateDatabase("INSERT INTO Users (name) VALUES ('" + user.getName() + "')");
     }
 
