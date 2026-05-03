@@ -86,7 +86,10 @@ public class Database {
 		catch (SQLException e) {
 			System.err.println("Failed to return from Database");
 			System.err.println(e.toString());
+<<<<<<< HEAD:src/Database/Database.java
 			
+=======
+>>>>>>> 646977ef33c270241169ed7005a885db600218bb:src/Database.java
 		}
 		return null;
 	}

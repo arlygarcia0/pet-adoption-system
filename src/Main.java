@@ -9,6 +9,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Database db = new Database(); //One database connection for everything
 
+        // one shared database connctionn for everything 
+        Database db = new Database();
         // 1. Initialize system: 
         //    Creating pets table and parameters; Adding values to the tables
         PetsTable pets = new PetsTable(db); // Handles logic for the pets database
@@ -38,7 +40,7 @@ public class Main {
         //    Ask for adopter name -> Check if its already in the system
         //    if not then add it to the table with currently 0 pets
         //    if yes, then select its tables
-        System.out.println("Welcome to the Pet Adoption Center!");
+        System.out.println("\nWelcome to the Pet Adoption Center!");
 
         System.out.println("Please enter your name: ");
         String name = input.nextLine();
@@ -73,10 +75,12 @@ public class Main {
         
 
         // 5. Show adopted pets by user
+        System.out.println("\nYour previously adopted pets: ");
         display.AdoptedPets(user.getUserID());
 
         // 4. Display available pets:
         //    Show pets where adopted = false
+        System.out.println();
         display.AvailablePets();
 
         // 5. Adopt a pet
@@ -87,9 +91,11 @@ public class Main {
         pets.adoptPet(petName, user.getUserID());
         
         // 6. Show adopted pets by user
+        System.out.println("\nYour adopted pets now: ");
         display.AdoptedPets(user.getUserID());
 
         // 7. Show shelter status
+        System.out.println("\nFull shelter status: ");
         display.AllPets();
 
         // 8. End program
