@@ -10,7 +10,7 @@ public class UsersTable {
     public UsersTable(Database db) {
         this.db = db;
         //Create a table for pets in shelter
-        db.updateDatabase("CREATE TABLE IF NOT EXISTS Users (name VARCHAR(255), id INT AUTO_INCREMENT PRIMARY KEY)");
+        db.updateDatabase("CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR (255))");
     }
     
     // Get user ID by name -> existing user enters the system

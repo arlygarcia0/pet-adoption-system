@@ -1,21 +1,14 @@
 package Tables;
 import Database.Database;
-public class DisplayInfo extends PetsTable {
-<<<<<<< HEAD:src/Tables/DisplayInfo.java
+public class DisplayInfo {
+    private Database db;
     // Constructor
     public DisplayInfo (Database db) {
-        super(db);
+        this.db = db;
     }
     // Show all pets
-=======
-    //Show all pets
-
-    public DisplayInfo(Database db) {
-        super(db);
-    }
->>>>>>> 646977ef33c270241169ed7005a885db600218bb:src/AdoptionCenter/DisplayInfo.java
     public void AllPets() {
-        System.out.println("All pets in the shelter: ");
+        System.out.println("Shelter Records: ");
         db.readDatabase("SELECT * FROM Pets");
     }
     // Display all availble pets
@@ -26,7 +19,7 @@ public class DisplayInfo extends PetsTable {
     //Show adopted pets by user
     public void AdoptedPets(int userID) {
         System.out.println("Pets adopted by user: ");
-        db.readDatabase("SELECT * FROM Pets WHERE adoptedBy = " + userID);
+        db.readDatabase("SELECT name, type, breed, age FROM Pets WHERE adoptedBy = " + userID);
     }
 
     ////DELETE

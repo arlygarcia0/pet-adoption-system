@@ -1,5 +1,5 @@
 package Tables;
-import Models.*;
+import Models.Pet;
 import Database.Database;
 
 public class PetsTable {
@@ -13,17 +13,13 @@ public class PetsTable {
     }
     // Adopt a pet 
     public void adoptPet(String petName, int userID) {
-        db.updateDatabase("UPDATE Pets SET adopted = 1, adoptedBy = " + userID + " WHERE LOWER (name) = LOWER('" + petName.trim() + "'");
+        db.updateDatabase("UPDATE Pets SET adopted = 1, adoptedBy = " + userID + " WHERE LOWER (name) = LOWER('" + petName + "')");
         System.out.println("Pet adopted successfully!");
     }
 
     // Using polymorphism to add cat/dog to the table -> Overloading
     // Add Dog
-    public void addPet(Dog dog) {
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('"+ dog.getName() + "', 'Dog','"+ dog.getBreed() + "', "+ dog.getAge() + ", 0, 'null')");
-    }
-    // Add Cat
-    public void addPet(Cat cat) {
-        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('"+ cat.getName() + "', 'Cat','"+ cat.getBreed() + "', "+ cat.getAge() + ", 0, 'null')");
+    public void addPet(Pet pet) {
+        db.updateDatabase("INSERT INTO Pets (name, type, breed, age, adopted, adoptedBy) VALUES ('"+ pet.getName() + "','" + pet.getType() +"','"+ pet.getBreed() + "', "+ pet.getAge() + ", 0, NULL)");
     }
 }
