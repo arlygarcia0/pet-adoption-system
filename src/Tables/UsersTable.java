@@ -11,6 +11,12 @@ public class UsersTable {
         this.db = db;
         //Create a table for pets in shelter
         db.updateDatabase("CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR (255))");
+        // Insert shelter records of current users
+        db.updateDatabase("INSERT INTO Users (name) VALUES ('Bob Bobbert')");
+        db.updateDatabase("INSERT INTO Users (name) VALUES ('Carl Carlton')");
+        db.updateDatabase("INSERT INTO Users (name) VALUES ('Jane Janeston')");
+        db.updateDatabase("INSERT INTO Users (name) VALUES ('Dan Danbert')");
+        db.updateDatabase("INSERT INTO Users (name) VALUES ('Susy Susan')");
     }
     
     // Get user ID by name -> existing user enters the system

@@ -1,30 +1,24 @@
 package Tables;
-import Database.Database;
+
 public class DisplayInfo {
-    private Database db;
-    // Constructor
-    public DisplayInfo (Database db) {
-        this.db = db;
-    }
-    // Show all pets
-    public void AllPets() {
-        System.out.println("Shelter Records: ");
-        db.readDatabase("SELECT * FROM Pets");
-    }
-    // Display all availble pets
-    public void AvailablePets() {
-        System.out.println("Pets that need a home: ");
-        db.readDatabase("SELECT * FROM Pets WHERE adopted = 0");
-    }
-    //Show adopted pets by user
-    public void AdoptedPets(int userID) {
-        System.out.println("Pets adopted by user: ");
-        db.readDatabase("SELECT name, type, breed, age FROM Pets WHERE adoptedBy = " + userID);
+    private PetsTable petsTable;
+
+    public DisplayInfo(PetsTable petsTable) {
+        this.petsTable = petsTable;
     }
 
-    ////DELETE
-    public void deleteTables() {
-        db.updateDatabase("DROP TABLE Pets");
-        db.updateDatabase("DROP TABLE Users");
+    public void AllPets() {
+        System.out.println("Shelter Records: ");
+        petsTable.getAllPets();
+    }
+
+    public void AvailablePets() {
+        System.out.println("Pets that need a home: ");
+        petsTable.getAvailablePets();
+    }
+
+    public void AdoptedPets(int userID) {
+        System.out.println("Pets adopted by user: ");
+        petsTable.getAdoptedPets(userID);
     }
 }

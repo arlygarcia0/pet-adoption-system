@@ -59,10 +59,18 @@ public class Database {
 			}
 			//Instead of suing executeUpdate(), we use executeQuery() this will return a ResultSet
 			ResultSet result = statement.executeQuery(query);
+			int columnCount = result.getMetaData().getColumnCount(); //Doing dynamically instead of result.getString(#)
 			//We will keeep calling the next() method from result until it is empty
 			//We will read row by row
 			while(result.next()) {
-				System.out.println(result.getString(1) +", " + result.getString(2) + ", " + result.getString(3) + ", " + result.getString(4) + ", " + result.getString(5) + ", " + result.getString(6));
+				//System.out.println(result.getString(1) +", " + result.getString(2) + ", " + result.getString(3) + ", " + result.getString(4) + ", " + result.getString(5) + ", " + result.getString(6));
+				for (int index = 1; index <= columnCount; index++ ) {
+					System.out.print(result.getString(index));
+					if (index < columnCount) {
+						System.out.print(", ");
+					}
+				}
+				System.out.println();
 			}
 		}
 		catch (SQLException e) {

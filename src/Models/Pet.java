@@ -3,9 +3,9 @@ package Models;
 // Making Pet abstract because we don't want a pet object to be instantiated, it has to be either dog/cat
 public abstract class Pet {
     // Attributes using encapsulation
-    protected String name;
-    protected String breed;
-    protected int age;
+    private String name;
+    private String breed;
+    private int age;
 
     // Constructor
     public Pet(String name, String breed, int age) {
