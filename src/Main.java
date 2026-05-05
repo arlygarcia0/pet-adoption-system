@@ -12,9 +12,7 @@ public class Main {
         //    Creating pets database tables
         PetsTable petsTable = new PetsTable(db); // Handles logic for the pets database
         UsersTable usersTable = new UsersTable(db); // Handles logic  for the users database
-        DisplayInfo display = new DisplayInfo(petsTable); // Handles all printing
-        // db.updateDatabase("DROP TABLE Pets");
-        // db.updateDatabase("DROP TABLE Users");
+        DisplayInfo display = new DisplayInfo(petsTable); // Handles all printingkaro
 
         // 2. Create new user:
         //    Ask for adopter name -> Check if its already in the system
@@ -22,10 +20,10 @@ public class Main {
         //    if yes, then select its tables
         System.out.println("\nWelcome to the Pet Adoption Center!");
 
-        System.out.println("Please enter your name: ");
+        System.out.println("\nPlease enter your name: ");
         String name = input.nextLine();
 
-        System.out.println("Are you a returning user? (yes/no): ");
+        System.out.println("\nAre you a returning user? (yes/no): ");
         String response = input.nextLine();
 
         User user;
@@ -87,7 +85,31 @@ public class Main {
         // 8. Show shelter status
         display.AllPets();
 
+        response = "keep";
+        while (response.equals("keep")) {
+            System.out.println("\nDo you wanna keep adopting pets or log out? (keep/log out)");
+            response = input.nextLine();
+            System.out.println();
+            if (response.equals("keep")) {
+                // 4. Display available pets:
+                display.AvailablePets();
+                System.out.println();
+                // 5. Adopt a pet
+                System.out.println("Please enter the name of the pet you'd like: ");
+                petName = input.nextLine();
+                petsTable.adoptPet(petName, user.getUserID());
+                System.out.println();
+                // 6. Show adopted pets by user
+                display.AdoptedPets(user.getUserID());
+                System.out.println();
+            }
+        }
+
+        System.out.println("Logging out..");
+
         // 9. End program
+        db.updateDatabase("DROP TABLE Pets");
+        db.updateDatabase("DROP TABLE Users");
         input.close();
     }
 }
